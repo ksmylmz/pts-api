@@ -76,6 +76,7 @@ class PtsApi
      */
     public function addShipment($shipment)
     {
-        
+        $shipment->kullanici = Config::USERNAME;
+        return $this->service->sendRequest("addshipment",$shipment);
     }
 }
