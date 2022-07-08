@@ -3,6 +3,7 @@ namespace ksmylmz\ptsapi;
 use ksmylmz\ptsapi\Config;
 use ksmylmz\ptsapi\model\GetLabel;
 use ksmylmz\ptsapi\model\Tracking;
+use ksmylmz\ptsapi\model\GetConsignment;
 
 class PtsApi 
 {
@@ -48,6 +49,24 @@ class PtsApi
         $payload->ptsno = (empty($ptsRefferance))?"":$ptsRefferance;
         $payload->siparisno = (empty($customerRefferance))?"":$customerRefferance;
         $payload->etiket = $labelCode;
-        return $this->service->sendRequest("tracking",$payload);
+        return $this->service->sendRequest("getlabel",$payload);
+    }
+    /**
+     * GetConsignment
+     *
+     * @param  string $ptsRefferance
+     * @param  string $customerRefferance
+     * @param  string $labelCode
+     * @return \ksmylmz\ptsapi\model\Response
+     */
+    public function GetConsignment($ptsRefferance,$customerRefferance,$labelCode=1)
+    {
+        $payload  = new GetConsignment();
+        $payload->kullanici = Config::USERNAME;
+        $payload->sifre = Config::PASSWORD;
+        $payload->ptsno = (empty($ptsRefferance))?"":$ptsRefferance;
+        $payload->siparisno = (empty($customerRefferance))?"":$customerRefferance;
+        $payload->etiket = $labelCode;
+        return $this->service->sendRequest("getConsignment",$payload);
     }
 }
