@@ -1,5 +1,5 @@
 <?php
-namespace ksmylmz\ptsapi\model;
+namespace ksmylmz\ptsapi\enum;
 class Language 
 {   
     const TURKISH="TR";

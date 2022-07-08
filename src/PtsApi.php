@@ -56,7 +56,6 @@ class PtsApi
      *
      * @param  string $ptsRefferance
      * @param  string $customerRefferance
-     * @param  string $labelCode
      * @return \ksmylmz\ptsapi\model\Response
      */
     public function GetConsignment($ptsRefferance,$customerRefferance)
@@ -67,5 +66,16 @@ class PtsApi
         $payload->ptsno = (empty($ptsRefferance))?"":$ptsRefferance;
         $payload->siparisno = (empty($customerRefferance))?"":$customerRefferance;
         return $this->service->sendRequest("getConsignment",$payload);
+    }
+    
+    /**
+     * addShipment
+     *
+     * @param  Shipment $shipment
+     * @return \ksmylmz\ptsapi\model\Response
+     */
+    public function addShipment($shipment)
+    {
+        
     }
 }
