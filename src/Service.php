@@ -35,8 +35,9 @@ class Service
         $response =  new Response();
         try 
         {
+            $payloadAsArray = (array) $payload;
             $response->status=true;
-            $response->body = $this->client->__soapCall($method,$payload);
+            $response->body = $this->client->__soapCall($method,$payloadAsArray);
 
         } catch (\Throwable $th) 
         {
