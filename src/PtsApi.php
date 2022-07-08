@@ -59,14 +59,13 @@ class PtsApi
      * @param  string $labelCode
      * @return \ksmylmz\ptsapi\model\Response
      */
-    public function GetConsignment($ptsRefferance,$customerRefferance,$labelCode=1)
+    public function GetConsignment($ptsRefferance,$customerRefferance)
     {
         $payload  = new GetConsignment();
         $payload->kullanici = Config::USERNAME;
         $payload->sifre = Config::PASSWORD;
         $payload->ptsno = (empty($ptsRefferance))?"":$ptsRefferance;
         $payload->siparisno = (empty($customerRefferance))?"":$customerRefferance;
-        $payload->etiket = $labelCode;
         return $this->service->sendRequest("getConsignment",$payload);
     }
 }

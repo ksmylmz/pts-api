@@ -26,10 +26,4 @@ class GetConsignment
      * @var string
      */
     public $siparisno;    
-    /**
-     * dil
-     *
-     * @var string
-     */
-    public $etiket;
 }

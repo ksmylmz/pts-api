@@ -27,7 +27,7 @@ class GetLabel
      */
     public $siparisno;    
     /**
-     * dil
+     * etiket
      *
      * @var string
      */
