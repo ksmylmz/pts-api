@@ -77,6 +77,20 @@ class PtsApi
     public function addShipment($shipment)
     {
         $shipment->kullanici = Config::USERNAME;
+        $shipment->sifre = Config::PASSWORD;
         return $this->service->sendRequest("addshipment",$shipment);
+    }
+
+    /**
+     * addShipment
+     *
+     * @param  ShipmentWithPickup $shipment
+     * @return \ksmylmz\ptsapi\model\Response
+     */
+    public function addShipmentWithPickup($shipment)
+    {
+        $shipment->kullanici = Config::USERNAME;
+        $shipment->sifre = Config::PASSWORD;
+        return $this->service->sendRequest("addShipmentWithPickUp",$shipment);
     }
 }
