@@ -58,7 +58,7 @@ class PtsApi
     {
         $payload  = new GetLabel();
         $payload->kullanici = $this->config->getUsername();;
-        $payload->sifre = Config::PASSWORD;
+        $payload->sifre = $this->config->getPassword();;
         $payload->ptsno = (empty($ptsRefferance))?"":$ptsRefferance;
         $payload->siparisno = (empty($customerRefferance))?"":$customerRefferance;
         $payload->etiket = $labelCode;
@@ -75,7 +75,7 @@ class PtsApi
     {
         $payload  = new GetConsignment();
         $payload->kullanici = $this->config->getUsername();;
-        $payload->sifre = Config::PASSWORD;
+        $payload->sifre = $this->config->getPassword();;
         $payload->ptsno = (empty($ptsRefferance))?"":$ptsRefferance;
         $payload->siparisno = (empty($customerRefferance))?"":$customerRefferance;
         return $this->service->sendRequest("getConsignment",$payload);
@@ -90,7 +90,7 @@ class PtsApi
     public function addShipment($shipment)
     {
         $shipment->kullanici = $this->config->getUsername();;
-        $shipment->sifre = Config::PASSWORD;
+        $shipment->sifre = $this->config->getPassword();;
         return $this->service->sendRequest("addshipment",$shipment);
     }
 
@@ -103,7 +103,7 @@ class PtsApi
     public function addShipmentWithPickup($shipment)
     {
         $shipment->kullanici = $this->config->getUsername();;
-        $shipment->sifre = Config::PASSWORD;
+        $shipment->sifre = $this->config->getPassword();;
         return $this->service->sendRequest("addShipmentWithPickUp",$shipment);
     }
 }
