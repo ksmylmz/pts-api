@@ -106,4 +106,11 @@ class PtsApi
         $shipment->sifre = $this->config->getPassword();;
         return $this->service->sendRequest("addShipmentWithPickUp",$shipment);
     }
+
+    public function updateInvoice($updateInvoice)
+    {
+        $updateInvoice->kullanici = $this->config->getUsername();;
+        $updateInvoice->sifre = $this->config->getPassword();;
+        return $this->service->sendRequest("updateInvoiceInfo",$updateInvoice);
+    }
 }
