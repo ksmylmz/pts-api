@@ -1,20 +1,19 @@
 <?php
 namespace ksmylmz\ptsapi;
 
-use ksmylmz\ptsapi\Config;
 use ksmylmz\ptsapi\model\Response;
 
 class Service 
 {
     private $client;
-    function __construct()
+    function __construct($wsdl_url)
     {
         $context = stream_context_create(array(
             'ssl' => array('verify_peer' => true, 'verify_peer_name' => false, 'allow_self_signed' => true)
         ));
 
         $this->client = new \SoapClient(
-            Config::WSDL_URL,
+            $wsdl_url,
             [
                 'cache_wsdl' => WSDL_CACHE_NONE,
                 'trace' => 1,

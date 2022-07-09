@@ -8,11 +8,24 @@ use ksmylmz\ptsapi\model\GetConsignment;
 class PtsApi 
 {
     private $service;
-
-
-    public function __construct()
+    
+    /**
+     * config
+     *
+     * @var Config
+     */
+    private $config;
+    
+    /**
+     * __construct
+     *
+     * @param  Config $config
+     * @return void
+     */
+    public function __construct($config)
     {
-        $this->service = new Service();
+        $this->config = $config;
+        $this->service = new Service($config->getWsdl_url());
     }
     
     /**
@@ -26,8 +39,8 @@ class PtsApi
     public function Tracking($ptsRefferance,$customerRefferance,$language="EN")
     {
         $payload  = new Tracking();
-        $payload->kullanici = Config::USERNAME;
-        $payload->sifre = Config::PASSWORD;
+        $payload->kullanici = $this->config->getUsername();
+        $payload->sifre = $this->config->getPassword();
         $payload->ptsno = (empty($ptsRefferance))?"":$ptsRefferance;
         $payload->siparisno = (empty($customerRefferance))?"":$customerRefferance;
         $payload->dil = $language;
@@ -44,7 +57,7 @@ class PtsApi
     public function GetLabel($ptsRefferance,$customerRefferance,$labelCode=1)
     {
         $payload  = new GetLabel();
-        $payload->kullanici = Config::USERNAME;
+        $payload->kullanici = $this->config->getUsername();;
         $payload->sifre = Config::PASSWORD;
         $payload->ptsno = (empty($ptsRefferance))?"":$ptsRefferance;
         $payload->siparisno = (empty($customerRefferance))?"":$customerRefferance;
@@ -61,7 +74,7 @@ class PtsApi
     public function GetConsignment($ptsRefferance,$customerRefferance)
     {
         $payload  = new GetConsignment();
-        $payload->kullanici = Config::USERNAME;
+        $payload->kullanici = $this->config->getUsername();;
         $payload->sifre = Config::PASSWORD;
         $payload->ptsno = (empty($ptsRefferance))?"":$ptsRefferance;
         $payload->siparisno = (empty($customerRefferance))?"":$customerRefferance;
@@ -76,20 +89,20 @@ class PtsApi
      */
     public function addShipment($shipment)
     {
-        $shipment->kullanici = Config::USERNAME;
+        $shipment->kullanici = $this->config->getUsername();;
         $shipment->sifre = Config::PASSWORD;
         return $this->service->sendRequest("addshipment",$shipment);
     }
 
     /**
-     * addShipment
+     * addShipmentWithPickup
      *
      * @param  ShipmentWithPickup $shipment
      * @return \ksmylmz\ptsapi\model\Response
      */
     public function addShipmentWithPickup($shipment)
     {
-        $shipment->kullanici = Config::USERNAME;
+        $shipment->kullanici = $this->config->getUsername();;
         $shipment->sifre = Config::PASSWORD;
         return $this->service->sendRequest("addShipmentWithPickUp",$shipment);
     }
