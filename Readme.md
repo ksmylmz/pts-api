@@ -56,12 +56,12 @@ All Method of PtsApi Object Return with type of
 ````php 
 use ksmylmz\ptsapi\model\Response
 ````
-You can control the response  succes or fault status via Status paranmeter.
+You can check the response  been succes or fault status via Status parameter.
 In addition, Response Object contains request and response xml values.
 
 For Eg.
 ````php
- $response = $ptsApi->GetConsignment("1234567", "2222222222");
+$response = $ptsApi->GetConsignment("1234567", "2222222222");
 if($response->status)
 {
    var_dump($response->body);
@@ -237,7 +237,7 @@ $ptsApi->GetLabel("1234567", "222222222", 1);
 
 You may passing customer refferance  or PTS refferance 
 
-It returns A4 size and PDf format
+It returns A4 size and PDF  format
 ````php
 
 $ptsApi->GetConsignment("1234567", "222222222");
