@@ -1,6 +1,6 @@
 <?php
 namespace ksmylmz\ptsapi\model;
-class  Shipment
+class  ShipmentWithPickup
 {    
     /**
      * kullanici
